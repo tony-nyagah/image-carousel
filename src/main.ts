@@ -119,7 +119,7 @@ new Carousel(document.querySelector('#my-carousel'), {
     </main>
 
     <footer class="page-footer">
-      <p>Built with TypeScript + DaisyUI &nbsp;·&nbsp; Neubrutalist style</p>
+      <p>Built with TypeScript + Tailwind CSS &nbsp;·&nbsp; Neubrutalist style</p>
     </footer>
 
   </div>

@@ -1,6 +1,6 @@
 # Image Carousel
 
-A reusable, accessible image carousel component built with vanilla TypeScript — no external carousel library. Styled with a **neubrutalist** aesthetic using DaisyUI + Tailwind CSS v4.
+A reusable, accessible image carousel component built with vanilla TypeScript — no external carousel library. Styled with a **neubrutalist** aesthetic using Tailwind CSS v4.
 
 ---
 
@@ -127,7 +127,7 @@ index.html
 
 - **TypeScript** (ES2023 target, strict)
 - **Vite 8**
-- **Tailwind CSS v4** + **DaisyUI v5**
+- **Tailwind CSS v4**
 - **CSS custom properties** — drive slide animation without JS pixel maths
 - **CSS `translate` property** — individual transform for smooth GPU compositing
 - **CSS nesting** — component-scoped rules without a preprocessor
