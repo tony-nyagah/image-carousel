@@ -1,0 +1,219 @@
+/* ==========================================================================
+   carousel.css — Neubrutalist slideshow
+   Uses a simple show/hide + fade approach. No transform tricks.
+   ========================================================================== */
+
+/* ── Container ───────────────────────────────────────────────────────────── */
+/* Using .slideshow prefix to avoid colliding with DaisyUI's .carousel */
+.slideshow {
+    position: relative;
+    border: 3px solid #0d0d0d;
+    box-shadow: 6px 6px 0 #0d0d0d;
+    background: #0d0d0d;
+    font-family: inherit;
+}
+
+/* ── Slides: hidden by default, shown when .is-active ───────────────────── */
+.slideshow__slide {
+    display: none;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(90deg, #1c1c1c 25%, #2e2e2e 50%, #1c1c1c 75%);
+    background-size: 600px 100%;
+    animation: shimmer 1.4s ease infinite;
+}
+
+.slideshow__slide.is-active {
+    display: block;
+    animation: fade-in 0.45s ease;
+}
+
+.slideshow__slide.is-loaded {
+    animation: fade-in 0.45s ease; /* keep the fade, drop the shimmer */
+    background: none;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes shimmer {
+    from {
+        background-position: -600px 0;
+    }
+    to {
+        background-position: 600px 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .slideshow__slide.is-active {
+        animation: none;
+    }
+    .slideshow__slide {
+        animation: none;
+    }
+}
+
+/* ── Image ───────────────────────────────────────────────────────────────── */
+.slideshow__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ── Caption ─────────────────────────────────────────────────────────────── */
+.slideshow__caption {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0.55rem 1rem;
+    background: #0d0d0d;
+    color: #ffe600;
+    font-weight: 800;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+/* ── Pause button (top-right of the image area) ──────────────────────────── */
+.slideshow__pause {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    width: 34px;
+    height: 34px;
+    border: 2px solid #0d0d0d;
+    background: #ffe600;
+    box-shadow: 3px 3px 0 #0d0d0d;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slideshow__pause:hover {
+    background: #ff3ea5;
+    color: #fff;
+}
+.slideshow__pause:active {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+.slideshow__pause:focus-visible {
+    outline: 2px solid #00d4ff;
+    outline-offset: 2px;
+}
+
+/* ── Controls bar (prev | dots+counter | next) ───────────────────────────── */
+.slideshow__controls {
+    display: flex;
+    align-items: stretch;
+    height: 54px;
+    border-top: 3px solid #0d0d0d;
+    background: #ffe600;
+}
+
+.slideshow__btn {
+    flex-shrink: 0;
+    width: 54px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0d0d0d;
+}
+
+.slideshow__btn:hover {
+    background: #ff3ea5;
+    color: #fff;
+}
+.slideshow__btn:active {
+    background: color-mix(in srgb, #ff3ea5 80%, black);
+}
+.slideshow__btn:focus-visible {
+    outline: 3px solid #00d4ff;
+    outline-offset: -3px;
+}
+.slideshow__btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+.slideshow__btn svg {
+    pointer-events: none;
+}
+
+/* ── Center: dots + slide counter ───────────────────────────────────────── */
+.slideshow__centre {
+    flex: 1;
+    border-inline: 3px solid #0d0d0d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.slideshow__dots {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+
+.slideshow__dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 2px solid #0d0d0d;
+    background: transparent;
+    cursor: pointer;
+    transition:
+        background 150ms ease,
+        transform 150ms ease;
+}
+
+.slideshow__dot.is-active {
+    background: #0d0d0d;
+    transform: scale(1.4);
+}
+.slideshow__dot:hover:not(.is-active) {
+    background: #ff3ea5;
+    border-color: #ff3ea5;
+}
+.slideshow__dot:focus-visible {
+    outline: 2px solid #00d4ff;
+    outline-offset: 2px;
+}
+
+.slideshow__counter {
+    font-weight: 900;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    font-variant-numeric: tabular-nums;
+    user-select: none;
+}
+
+/* ── Screen-reader utility ───────────────────────────────────────────────── */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}

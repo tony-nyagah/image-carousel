@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Global page styles — Neubrutalist demo
+   ========================================================================== */
+
+/* ── Reset & base ───────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100dvh;
+    background-color: #fff9e6;
+    font-family: "Arial Black", "Arial Bold", Arial, system-ui, sans-serif;
+    color: #0d0d0d;
+}
+
+/* ── Page shell ─────────────────────────────────────────────────────────── */
+.page {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.page-header {
+    background: #0d0d0d;
+    padding: 2.5rem 1.5rem 2rem;
+}
+
+.page-header__inner {
+    max-width: 880px;
+    margin-inline: auto;
+}
+
+.page-header__eyebrow {
+    display: inline-block;
+    background: #ffe600;
+    color: #0d0d0d;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    margin-bottom: 1.25rem;
+}
+
+.page-header__title {
+    margin: 0 0 1rem;
+    font-size: clamp(3.5rem, 10vw, 6.5rem);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.page-header__sub {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: system-ui, sans-serif;
+}
+
+/* ── Main ───────────────────────────────────────────────────────────────── */
+.page-main {
+    flex: 1;
+    max-width: 880px;
+    width: 100%;
+    margin-inline: auto;
+    padding: 3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+/* ── Carousel wrapper ───────────────────────────────────────────────────── */
+.page-main__carousel-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* ── Keyboard hint ──────────────────────────────────────────────────────── */
+.keyboard-hint {
+    margin: 0;
+    font-size: 0.72rem;
+    font-family: system-ui, sans-serif;
+    color: #0d0d0d;
+    opacity: 0.55;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+.kbd {
+    display: inline-block;
+    padding: 1px 6px;
+    border: 1.5px solid #0d0d0d;
+    background: #fff;
+    font-family: system-ui, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 1.6;
+    box-shadow: 2px 2px 0 #0d0d0d;
+}
+
+/* ── Section title ──────────────────────────────────────────────────────── */
+.section-title {
+    margin: 0 0 1rem;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #0d0d0d;
+}
+
+/* ── Feature grid ───────────────────────────────────────────────────────── */
+.feature-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    border-top: 3px solid #0d0d0d;
+    border-left: 3px solid #0d0d0d;
+}
+
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 1.1rem 1rem;
+    border-right: 3px solid #0d0d0d;
+    border-bottom: 3px solid #0d0d0d;
+    background: #fff;
+
+    &:nth-child(even) {
+        background: #fff9e6;
+    }
+    &:nth-child(3n) {
+        background: #fff0f6;
+    }
+}
+
+.feature-card__icon {
+    font-size: 1.6rem;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.feature-card strong {
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+}
+
+.feature-card span {
+    font-size: 0.72rem;
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+    opacity: 0.7;
+}
+
+/* ── Code block ─────────────────────────────────────────────────────────── */
+.code-block {
+    border: 3px solid #0d0d0d;
+    box-shadow: 5px 5px 0 #0d0d0d;
+    background: #0d0d0d;
+
+    & pre {
+        margin: 0;
+        padding: 1.5rem;
+        overflow-x: auto;
+
+        & code {
+            color: #ffe600;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.78rem;
+            line-height: 1.7;
+        }
+    }
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+.page-footer {
+    border-top: 3px solid #0d0d0d;
+    background: #0d0d0d;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    font-family: system-ui, sans-serif;
+
+    & p {
+        margin: 0;
+    }
+}
